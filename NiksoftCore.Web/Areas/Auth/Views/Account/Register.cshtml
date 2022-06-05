@@ -1,0 +1,95 @@
+﻿
+@model NiksoftCore.ViewModel.User.UserRegisterRequest
+@{
+    ViewData["Title"] = "ثبت نام";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Messages = (List<NiksoftCore.ViewModel.NikMessage>)ViewBag.Messages;
+}
+
+<style>
+    .field-validation-error {
+        color: #b3103d;
+    }
+</style>
+<br />
+<div class="page-title">
+    <h1 class="text-center">Create New Account</h1>
+</div>
+<form action="/Auth/Account/Register" method="post">
+    <div class="registerdiv">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="form-group">
+                    <label for="txtFirstname" class="control-label">First Name</label>
+                    @Html.TextBoxFor(m => m.Firstname, new { placeholder = "First Name", @class = "form-control", @id = "txtFirstname" })
+                    @Html.ValidationMessageFor(m => m.Firstname)
+                </div>
+
+                <div class="form-group">
+                    <label for="txtLastname" class="control-label">Last Name</label>
+                    @Html.TextBoxFor(m => m.Lastname, new { placeholder = "Last Name", @class = "form-control", @id = "txtLastname" })
+                    @Html.ValidationMessageFor(m => m.Lastname)
+                </div>
+
+                <div class="form-group">
+                    <label for="txtEmail" class="control-label">Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control", @id = "txtEmail" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+
+                <div class="form-group">
+                    <label for="txtPhone" class="control-label">Mobile Number (User Name)</label>
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { placeholder = "098...", @class = "form-control", @id = "txtPhone" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber)
+                </div>
+
+                <div class="form-group">
+                    <label for="txtPasword" class="control-label">Password</label>
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control", @id = "txtPasword" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+
+                <div class="form-group">
+                    <label for="txtPasswordConf" class="control-label">Repeat Password</label>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Repeat Password", @class = "form-control", @id = "txtPasword" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-dark btn-full btn-br-0">Sign Up</button>
+                    <a class="btn btn-info" href="/Auth/Account/Login">Sign In</a>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<script>
+    $(document).ready(function () {
+        @if (Messages != null)
+        {
+            @foreach (var item in Messages)
+            {
+                if (item.Type == NiksoftCore.ViewModel.MessageType.Error)
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'error'
+                    });
+                    </text>
+                }
+                else
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'success'
+                    });
+                    </text>
+                }
+            }
+        }
+    });
+</script>

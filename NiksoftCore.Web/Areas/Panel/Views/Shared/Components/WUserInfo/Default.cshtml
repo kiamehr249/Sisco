@@ -1,0 +1,65 @@
+﻿@using NiksoftCore.DataModel
+@{
+    var profile = (UserProfile)ViewBag.Profile;
+    var theUser = (NiksoftCore.DataModel.User)ViewBag.User;
+}
+
+<ul class="nav navbar-left float-right list-inline">
+    <li class="dropdown d-none d-sm-block">
+        <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light notification-icon-box" data-toggle="dropdown" aria-expanded="true">
+            <i class="fa fa-bell"></i> <span class="badge badge-xs badge-danger"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg">
+            <li class="text-center notifi-title">Messages <span class="badge badge-xs badge-success">3</span></li>
+            <li class="list-group">
+                <a href="javascript:void(0);" class="list-group-item">
+                    <div class="media">
+                        <div class="media-heading">پیام های کاربران</div>
+                        <p class="m-0">
+                            <small>شما 30 پیام باز نشده دارید</small>
+                        </p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="list-group-item">
+                    <div class="media">
+                        <div class="media-body clearfix">
+                            <div class="media-heading">دوره های آموزشی</div>
+                            <p class="m-0">
+                                <small>تعداد ثبت نامی های دوره فلا به سقف خود رسیده است</small>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="list-group-item">
+                    <small class="text-primary">بیشتر</small>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="d-none d-sm-block">
+        <a href="#" id="btn-fullscreen" class="waves-effect waves-light notification-icon-box">
+            <i class="fas fa-compress"></i>
+        </a>
+    </li>
+
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+            @if (profile != null && !string.IsNullOrEmpty(profile.Avatar))
+            {
+                <img src="~/@profile.Avatar" alt="user-img" class="rounded-circle">
+            }
+            else
+            {
+                <img src="~/templates/dashboard/NikFace/images/users/avatar-1.jpg" alt="user-img" class="rounded-circle">
+            }
+
+        </a>
+        <ul class="dropdown-menu dropdown-menu-left">
+            <li><a href="/Panel/UserProfileManage/MyProfile" class="dropdown-item"> پروفایل</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a href="/Auth/Account/Logout" class="dropdown-item"> خروج</a></li>
+        </ul>
+    </li>
+</ul>
+
+

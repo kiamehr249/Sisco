@@ -1,0 +1,94 @@
+﻿@model NiksoftCore.ViewModel.User.LoginRequest
+@{
+    ViewData["Title"] = "Sign In";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Messages = (List<NiksoftCore.ViewModel.NikMessage>)ViewBag.Messages;
+}
+
+<div class="login-container">
+    <div class="row m-0 login-parts">
+        <div class="col-lg-7 p-0 md-abslout">
+            <div class="login-form">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <form class="app-form" action="/Auth/Account/Login" method="post">
+                            <div class="mb-3">
+                                <label class="form-label" for="txtUsername">موبایل</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-regular fa-user-check"></i></span>
+                                    @Html.TextBoxFor(m => m.Username, new { placeholder = "موبایل", @class = "form-control", @id = "txtUsername" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.Username)
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="txtPassword">رمز عبور</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-regular fa-key-skeleton"></i></span>
+                                    @Html.PasswordFor(m => m.Password, new { placeholder = "رمز عبور", @class = "form-control", @id = "txtPassword" })
+                                </div>
+                                
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success btn-full">ورود به نرم‌افزار</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 p-0 login-img">
+            <div class="logo-carousel">
+                <div class="slick-login">
+                    <div><img src="/templates/FoodApp/img/image6.png" class="img-logo" /></div>
+                    <div><img src="/templates/FoodApp/img/farsi1.png" class="img-logo" /></div>
+                    <div><img src="/templates/FoodApp/img/kelana1.png" class="img-logo" /></div>
+                    <div><img src="/templates/FoodApp/img/image6.png" class="img-logo" /></div>
+                    <div><img src="/templates/FoodApp/img/farsi1.png" class="img-logo" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        @if (Messages != null)
+        {
+            @foreach (var item in Messages)
+            {
+                if (item.Type == NiksoftCore.ViewModel.MessageType.Error)
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'error'
+                    });
+                    </text>
+                }
+                else
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'success'
+                    });
+                    </text>
+                }
+            }
+        }
+
+
+        $('.slick-login').slick({
+            centerMode: true,
+            rtl: true,
+            arrows: false,
+            dots: true,
+            centerPadding: '20px',
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+
+    });
+</script>

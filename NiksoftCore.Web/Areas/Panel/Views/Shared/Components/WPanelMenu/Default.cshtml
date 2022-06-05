@@ -1,0 +1,63 @@
+﻿@using NiksoftCore.DataModel
+@{
+    var menus = (List<PanelMenu>)ViewBag.Menus;
+    var roles = (List<string>)ViewBag.Roles;
+}
+<ul>
+    @foreach (var item in menus)
+    {
+        @if (item.Childs.Count > 0)
+        {
+            <li class="has_sub">
+                <a href="javascript:void(0);" class="waves-effect">
+                    @Html.Raw(item.Icon)
+                    <span> @item.Title </span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </a>
+                <ul class="list-unstyled">
+                    @foreach (var subitem in item.Childs.OrderBy(x => x.Ordering))
+                    {
+                        @*<li><a href="@subitem.Link">@subitem.Title</a></li>*@
+
+                        if (string.IsNullOrEmpty(subitem.Roles))
+                        {
+                            <li><a href="@subitem.Link">@subitem.Title</a></li>
+                        }
+                        else
+                        {
+                            bool allow = false;
+                            foreach (var role in roles)
+                            {
+                                if (subitem.Roles.Contains(role))
+                                {
+                                    allow = true;
+                                    break;
+                                }
+                            }
+
+                            if (allow)
+                            {
+                                <li><a href="@subitem.Link">@subitem.Title</a></li>
+                            }
+
+                        }
+                    }
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a href="@item.Link" class="waves-effect">
+                    @Html.Raw(item.Icon)
+                    <span> @item.Title</span>
+                </a>
+            </li>
+        }
+
+    }
+</ul>
+
+

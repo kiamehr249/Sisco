@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<NiksoftCore.DataModel.User> SignInManager
+@inject UserManager<NiksoftCore.DataModel.User> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="nav-link text-dark" href="/Auth/Account/Manage" title="Manage">Hello @User.Identity.Name!</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Auth/Account/Logout" title="Manage">Logout</a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Auth/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Auth/Account/Login">Login</a>
+    </li>
+}
+</ul>
