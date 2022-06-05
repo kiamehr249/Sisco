@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="رستوران ها" name="description" />
-    <meta content="رستوران ها" name="author" />
+    <meta content="گزارش تماس ها" name="description" />
+    <meta content="گزارش تماس ها" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>@ViewBag.Title</title>
@@ -36,7 +36,7 @@
         <div class="topbar">
             <div class="topbar-right">
                 <div class="text-center">
-                    <a href="/Panel" class="logo"><img src="~/files/icons/logo1.png" alt="logo-img"><span>رستوران ها</span></a>
+                    <a href="/Panel" class="logo"><img src="~/files/icons/logo1.png" alt="logo-img"><span>پنل مدیریت</span></a>
                     <a href="/Panel" class="logo-sm"><img src="~/files/icons/logo1.png" alt="logo-img"></a>
                 </div>
             </div>
@@ -79,8 +79,8 @@
             <div class="content">
 
                 <div class="">
-                    <div class="page-header-title">
-                        <h4 class="page-title">@ViewBag.PageTitle</h4>
+                    <div class="page-header-title text-center shadow">
+                        <h4 class="page-title">@ViewData["Title"]</h4>
                     </div>
                 </div>
 

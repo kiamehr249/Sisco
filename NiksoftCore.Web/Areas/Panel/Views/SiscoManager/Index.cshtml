@@ -1,0 +1,64 @@
+﻿@using NiksoftCore.Utilities;
+@model NiksoftCore.ViewModel.CsvDataRequest
+@{
+    ViewData["Title"] = "بارگذاری بانک اطلاعات";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+    var records = (List<SiscoBaseModel>)ViewBag.Records;
+    int cc = 0;
+}
+
+<br />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow">
+            <div class="card-body">
+                <form action="/Panel/SiscoManager" method="post" enctype="multipart/form-data">
+                    <div class="form-group text-center">
+                        <label for="Source" class="btn btn-outline-info btn-full">
+                            انتخاب فایل
+                            <input asp-for="Source" type="file" class="d-none" />
+                        </label>
+                    </div>
+                    <div class="form-group text-center mt-3">
+                        <button type="submit" class="btn btn-outline-warning">مشاهده محتوا</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="text-warning">
+                    <tr>
+                        <td>ردیف</td>
+                        <td>شماره</td>
+                        <td>مدت انتظار</td>
+                        <td>اتصال</td>
+                        <td>قطع تماس</td>
+                        <td>دستگاه</td>
+                        <td>IP</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in records)
+                    {
+                        cc++;
+                        <tr>
+                            <td>@cc</td>
+                            <td>@item.callingPartyNumber</td>
+                            <td>@item.totalWaitTimeInQueue</td>
+                            <td>@item.dateTimeConnect.UnixToDateTime().ToPersianDigitalDateTimeString()</td>
+                            <td>@item.dateTimeDisconnect.UnixToDateTime().ToPersianDigitalDateTimeString()</td>
+                            <td>@item.destDeviceName</td>
+                            <td>@item.origIpv4v6Addr</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
