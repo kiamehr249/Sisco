@@ -96,9 +96,9 @@
         public string destVideoTransportAddress_IP_Channel2 { get; set; }
         public string destVideoTransportAddress_Port_Channel2 { get; set; }
         public string destVideoChannel_Role_Channel2 { get; set; }
-        public string incomingProtocolID { get; set; }
+        public int incomingProtocolID { get; set; }
         public string incomingProtocolCallRef { get; set; }
-        public string outgoingProtocolID { get; set; }
+        public int outgoingProtocolID { get; set; }
         public string outgoingProtocolCallRef { get; set; }
         public string currentRoutingReason { get; set; }
         public string origRoutingReason { get; set; }

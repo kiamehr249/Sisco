@@ -245,6 +245,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\NiksoftCore.DataAccess\NiksoftCore.DataAccess.csproj" />
     <ProjectReference Include="..\DataAccess\NiksoftCore.DataModel\NiksoftCore.DataModel.csproj" />
+    <ProjectReference Include="..\Services\NiksoftCore.Services\NiksoftCore.Services.csproj" />
     <ProjectReference Include="..\Utilities\NiksoftCore.MiddlController\NiksoftCore.MiddlController.csproj" />
     <ProjectReference Include="..\Utilities\NiksoftCore.Utilities\NiksoftCore.Utilities.csproj" />
     <ProjectReference Include="..\ViewModel\NiksoftCore.ViewModel\NiksoftCore.ViewModel.csproj" />

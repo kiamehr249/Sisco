@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiksoftCore.Utilities", "Ut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiksoftCore.MiddlController", "Utilities\NiksoftCore.MiddlController\NiksoftCore.MiddlController.csproj", "{A78F97D8-6E3D-4ABD-8423-20723D7FBBEE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F401D1AE-C6AB-4498-9A53-305C12B65EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiksoftCore.Services", "Services\NiksoftCore.Services\NiksoftCore.Services.csproj", "{39A3FE62-CE5A-4286-884F-31F33677CD70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{A78F97D8-6E3D-4ABD-8423-20723D7FBBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A78F97D8-6E3D-4ABD-8423-20723D7FBBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A78F97D8-6E3D-4ABD-8423-20723D7FBBEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A3FE62-CE5A-4286-884F-31F33677CD70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A3FE62-CE5A-4286-884F-31F33677CD70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A3FE62-CE5A-4286-884F-31F33677CD70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A3FE62-CE5A-4286-884F-31F33677CD70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +69,7 @@ Global
 		{47F2454E-5736-46BF-9D75-B070BD41A17C} = {92B47650-1F12-4EA9-89DA-233944B28203}
 		{7BEF7C8E-7115-4DE4-BA7C-CA6884FE3EF1} = {89263124-8F4B-44CC-B42E-2C73F4F04FCB}
 		{A78F97D8-6E3D-4ABD-8423-20723D7FBBEE} = {89263124-8F4B-44CC-B42E-2C73F4F04FCB}
+		{39A3FE62-CE5A-4286-884F-31F33677CD70} = {F401D1AE-C6AB-4498-9A53-305C12B65EC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6ECD2A52-14E6-44F0-9716-4BA1C6ADC664}

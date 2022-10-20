@@ -36,6 +36,8 @@ namespace NiksoftCore.DataModel
         public DbSet<FormControl> FormControls { get; set; }
         public DbSet<ControlItem> ControlItems { get; set; }
         public DbSet<FormData> FormDatas { get; set; }
+        public DbSet<SiscoRecord> SiscoRecords { get; set; }
+        public DbSet<BaseInfo> BaseInfos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -62,6 +64,8 @@ namespace NiksoftCore.DataModel
             builder.ApplyConfiguration(new ControlItemMap());
             builder.ApplyConfiguration(new FormDataMap());
             builder.ApplyConfiguration(new FormDataMap());
+            builder.ApplyConfiguration(new SiscoRecordMap());
+            builder.ApplyConfiguration(new BaseInfoMap());
         }
     }
 }

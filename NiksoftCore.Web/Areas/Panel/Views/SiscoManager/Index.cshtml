@@ -1,10 +1,12 @@
 ﻿@using NiksoftCore.Utilities;
+@using NiksoftCore.ViewModel;
 @model NiksoftCore.ViewModel.CsvDataRequest
 @{
     ViewData["Title"] = "بارگذاری بانک اطلاعات";
     Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
     var records = (List<SiscoBaseModel>)ViewBag.Records;
     int cc = 0;
+    var messages = (List<NikMessage>)ViewBag.Messages;
 }
 
 <br />
@@ -20,7 +22,13 @@
                         </label>
                     </div>
                     <div class="form-group text-center mt-3">
-                        <button type="submit" class="btn btn-outline-warning">مشاهده محتوا</button>
+                        <button type="submit" name="SubmitValue" value="json" class="btn btn-outline-warning">مشاهده کل اطلاعات</button>
+                    </div>
+                    <div class="form-group text-center mt-3">
+                        <button type="submit" class="btn btn-outline-warning">مشاهده محتوای نرمال</button>
+                    </div>
+                    <div class="form-group text-center mt-3">
+                        <button type="submit" name="SubmitValue" value="import" class="btn btn-outline-success">ایجاد در بانک اطلاعات</button>
                     </div>
                 </form>
             </div>
@@ -62,3 +70,36 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $(document).ready(function () {
+
+        @if (messages != null)
+        {
+            @foreach (var item in messages)
+            {
+                if (item.Type == NiksoftCore.ViewModel.MessageType.Error)
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'error'
+                    });
+                    </text>
+                }
+                else
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'success'
+                    });
+                    </text>
+                }
+            }
+        }
+
+
+    });
+</script>

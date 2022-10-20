@@ -1,0 +1,136 @@
+﻿
+@using NiksoftCore.DataModel
+@model NiksoftCore.ViewModel.BaseInfoRequest
+@{
+    ViewData["Title"] = "ایجاد اطلاعات پایه";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+    var Messages = (List<NiksoftCore.ViewModel.NikMessage>)ViewBag.Messages;
+}
+<div class="text-right">
+    <div class="btn-group">
+        <a href="/Panel/BaseInfoManager" class="btn btn-outline-info btn-sm">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+</div>
+<br />
+<form action="/Panel/BaseInfoManager/Create" method="post" enctype="multipart/form-data">
+    <div class="registerdiv">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="form-group">
+                    <label for="txtTitle" class="control-label">عنوان</label>
+                    @Html.TextBoxFor(m => m.Title, new { placeholder = "عنوان", @class = "form-control", @id = "txtTitle" })
+                </div>
+                @foreach (var item in Model.ViewModels)
+                {
+                    if (item.FieldType == BaseFieldType.MinValue)
+                    {
+                        <div class="form-group">
+                            <label for="MinValue" class="control-label">@item.Title</label>
+                            @Html.TextBoxFor(m => m.MinValue, new { placeholder = item.Title, @class = "form-control", @id = "MinValue" })
+                        </div>
+                    }
+
+                    if (item.FieldType == BaseFieldType.MaxValue)
+                    {
+                        <div class="form-group">
+                            <label for="MaxValue" class="control-label">@item.Title</label>
+                            @Html.TextBoxFor(m => m.MaxValue, new { placeholder = item.Title, @class = "form-control", @id = "MaxValue" })
+                        </div>
+                    }
+
+                    if (item.FieldType == BaseFieldType.IntValue)
+                    {
+                        <div class="form-group">
+                            <label for="IntValue" class="control-label">@item.Title</label>
+                            @Html.TextBoxFor(m => m.IntValue, new { placeholder = item.Title, @class = "form-control", @id = "IntValue" })
+                        </div>
+                    }
+
+                    if (item.FieldType == BaseFieldType.DoubleValue)
+                    {
+                        <div class="form-group">
+                            <label for="DoubleValue" class="control-label">@item.Title</label>
+                            @Html.TextBoxFor(m => m.DoubleValue, new { placeholder = item.Title, @class = "form-control", @id = "DoubleValue" })
+                        </div>
+                    }
+
+                    if (item.FieldType == BaseFieldType.StringValue)
+                    {
+                        <div class="form-group">
+                            <label for="StringValue" class="control-label">@item.Title</label>
+                            @Html.TextBoxFor(m => m.StringValue, new { placeholder = item.Title, @class = "form-control", @id = "StringValue" })
+                        </div>
+                    }
+
+                    if (item.FieldType == BaseFieldType.LongValue)
+                    {
+                        <div class="form-group">
+                            <label for="LongValue" class="control-label">@item.Title</label>
+                            @Html.TextBoxFor(m => m.LongValue, new { placeholder = item.Title, @class = "form-control", @id = "LongValue" })
+                        </div>
+                    }
+
+                    if (item.FieldType == BaseFieldType.BoolValue)
+                    {
+                        <div class="form-group">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(m => m.BoolValue, new { @class = "form-check-input", @id = "BoolValue" })
+                                <label class="form-check-label" for="BoolValue">
+                                    @item.Title
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                }
+                <div class="form-group">
+                    <label for="txtHeader" class="control-label">توضیحات</label>
+                    @Html.TextAreaFor(m => m.Description, new { placeholder = "توضیحات", @class = "form-control", @id = "txtHeader", rows = "3" })
+                </div>
+                @Html.HiddenFor(m => m.KeyValue)
+                @Html.HiddenFor(m => m.GroupValue)
+                @Html.HiddenFor(m => m.ViewObject)
+                @Html.HiddenFor(m => m.Id)
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-success">ذخیره</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        @if (Messages != null)
+        {
+            @foreach (var item in Messages)
+            {
+                if (item.Type == NiksoftCore.ViewModel.MessageType.Error)
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'error'
+                    });
+                    </text>
+                }
+                else
+                {
+                    <text>
+                    showMessage({
+                        text: '@item.Message',
+                        type: 'success'
+                    });
+                    </text>
+                }
+            }
+        }
+
+
+    });
+</script>

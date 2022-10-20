@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NiksoftCore.DataModel;
+using NiksoftCore.Services.Sisco;
 using System;
 using System.Text;
 
@@ -35,6 +36,7 @@ namespace NiksoftCore.Web
             services.AddRazorPages();
 
             services.AddScoped<ISystemBaseService, SystemBaseService>();
+            services.AddScoped<ISiscoService, SiscoService>();
 
             services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
             opt =>

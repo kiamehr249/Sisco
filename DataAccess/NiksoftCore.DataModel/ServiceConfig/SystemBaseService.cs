@@ -23,6 +23,8 @@ namespace NiksoftCore.DataModel
         IFormControlService iFormControlServ { get; set; }
         IControlItemService iControlItemServ { get; set; }
         IFormDataService iFormDataServ { get; set; }
+        ISiscoRecordService iSiscoRecordServ { get; set; }
+        IBaseInfoService iBaseInfoServ { get; set; }
     }
 
     public class SystemBaseService : ISystemBaseService
@@ -46,6 +48,9 @@ namespace NiksoftCore.DataModel
         public IControlItemService iControlItemServ { get; set; }
         public IFormDataService iFormDataServ { get; set; }
 
+        public ISiscoRecordService iSiscoRecordServ { get; set; }
+        public IBaseInfoService iBaseInfoServ { get; set; }
+
 
         public SystemBaseService(IConfiguration config)
         {
@@ -68,7 +73,8 @@ namespace NiksoftCore.DataModel
             iFormControlServ = new FormControlService(uow);
             iControlItemServ = new ControlItemService(uow);
             iFormDataServ = new FormDataService(uow);
-
+            iSiscoRecordServ = new SiscoRecordService(uow);
+            iBaseInfoServ = new BaseInfoService(uow);
         }
 
 

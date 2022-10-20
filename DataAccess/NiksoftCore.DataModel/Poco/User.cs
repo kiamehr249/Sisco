@@ -8,5 +8,7 @@ namespace NiksoftCore.DataModel
     {
         public AccountType AccountType { get; set; }
         public virtual ICollection<UserProfile> UserProfiles { get; set; }
+        public virtual ICollection<SiscoRecord> SiscoRecords { get; set; }
+        public virtual ICollection<BaseInfo> BaseInfos { get; set; }
     }
 }
