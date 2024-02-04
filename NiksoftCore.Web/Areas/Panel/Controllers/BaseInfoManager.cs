@@ -43,22 +43,22 @@ namespace NiksoftCore.Web.Areas.Panel.Controllers
             var user = await _userManager.GetUserAsync(HttpContext.User);
             ViewBag.PageTitle = "اطلاعات پایه";
 
-            var myPerfix = await _iSystemBaseServ.iBaseInfoServ.FindAsync(x => x.KeyValue == "PerFix" && x.UserId == user.Id);
+            var myPrefix = await _iSystemBaseServ.iBaseInfoServ.FindAsync(x => x.KeyValue == "PreFix" && x.UserId == user.Id);
             
-            if(myPerfix == null)
+            if(myPrefix == null)
             {
-                myPerfix = new BaseInfo
+                myPrefix = new BaseInfo
                 {
                     Title = "پیش شماره",
                     Description = "مقداری که دستگاه بصورت پیشفرض اضافه می کند",
-                    KeyValue = "PerFix",
+                    KeyValue = "PreFix",
                     GroupValue = "Sisco",
                     StringValue = null,
                     ViewObject = "[{\"FieldType\": 5, \"Title\": \"مقدار پیش فرض دستگاه\"}, {\"FieldType\": 7, \"Title\": \"برای مقادیر خروجی هم اضافه میشود؟\"}]",
                     UserId = user.Id,
                     CreateDate = DateTime.Now,
                 };
-                _iSystemBaseServ.iBaseInfoServ.Add(myPerfix);
+                _iSystemBaseServ.iBaseInfoServ.Add(myPrefix);
                 await _iSystemBaseServ.iBaseInfoServ.SaveChangesAsync();
             }
 
